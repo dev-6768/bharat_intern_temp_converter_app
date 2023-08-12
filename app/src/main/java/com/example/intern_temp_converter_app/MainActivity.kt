@@ -21,20 +21,21 @@ class MainActivity : AppCompatActivity() {
         actionButton.setOnClickListener {
             if(editTextDegreeC.text.toString() != "" && editTextDegreeF.text.toString() == "" && editTextKelvin.text.toString() == "") {
                 val number = editTextDegreeC.text.toString().toDouble()
-                editTextDegreeF.setText("${(9/5)*number + 32} degree F")
+                editTextDegreeF.setText("${(9*number)/5 + 32} degree F")
                 editTextKelvin.setText("${number + 273} K")
             }
 
             else if(editTextDegreeC.text.toString() == "" && editTextDegreeF.text.toString() != "" && editTextKelvin.text.toString() == "") {
+
                 val number = editTextDegreeF.text.toString().toDouble()
-                editTextDegreeC.setText("${(5/9)*(number - 32)} degree C")
-                editTextKelvin.setText("${(5/9)*(number - 32) + 273} K")
+                editTextDegreeC.setText("${(5*(number - 32))/9} degree C")
+                editTextKelvin.setText("${(5*(number - 32))/9 + 273} K")
             }
 
             else if(editTextDegreeC.text.toString() == "" && editTextDegreeF.text.toString() == "" && editTextKelvin.text.toString() != "") {
                 val number = editTextKelvin.text.toString().toDouble()
-                editTextDegreeC.setText("${number-273} K")
-                editTextDegreeF.setText("${(9/5)*(number - 273) + 32} degree F")
+                editTextDegreeC.setText("${number-273} degree C")
+                editTextDegreeF.setText("${(9*(number - 273))/5 + 32} degree F")
             }
 
             else{
